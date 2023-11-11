@@ -14,7 +14,6 @@
             <p><b>Email</b>: {{profile.user.email}}</p>
             <p><b>Address</b>: {{profile.Home_address}}</p>
             <p><b>Location</b>: {{profile.location}}</p>
-            <p><b>Matriculation number (student loan only)</b>: {{profile.martriculation_number}}</p>
             <p><b>Phone_number</b>: {{profile.phone_number}}</p>
             <a href={% url 'edith_profile' %}>
                 <button class="edit-button">Edit Profile</button>
@@ -39,7 +38,7 @@
                 <th>Quantity</th>
                 <th>Total Amount</th>
                 <th>Payment status</th>
-                <th>Product Status</th>
+                <th>Delivery Status</th>
             </tr>
         </thead>
         <tbody>

@@ -16,15 +16,21 @@
         <div class="hero-content">
 
           <p class="hero-subtitle">GT Concepts</p>
-
-          <h2 class="h2 hero-title">Place Your order from your home</h2>
-
-          <a href="{% url 'products' %}">
-            <button class="btn btn-outline" >
-               Shop Now
-            </button>
-          </a>
-  
+          {% if user.is_authenticated %}
+            <h2 class="h2 hero-title">Place Your order from your home</h2>
+            <a href="{% url 'products' %}">
+              <button class="btn btn-outline" >
+                Shop Now
+              </button>
+            </a>
+          {% else %}
+            <h2 class="h2 hero-title">To Start Shopping, Please Sign Up</h2>
+            <a href="{% url 'signup' %}">
+              <button class="btn btn-outline" >
+                Signup
+              </button>
+            </a>
+          {% endif %}
         </div>
 
       </div>
@@ -231,21 +237,33 @@
         <div class="newsletter-card"
           style="background-image: url({% static './images/newsletter-bg.png' %})">
 
-          <h2 class="card-title">Gts concepts</h2>
-
-          <p class="card-text">
-            Serving You better
-          </p>
-          <div class="input-wrapper">  
-            <a href="{% url 'products' %}">
-              <button class="btn btn-primary w-100">
-                <span>Shop Now</span>
-                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-              </button>
-            </a>
+          <h2 class="card-title">GT Concepts</h2>
+          {% if user.is_authenticated %}
+            <p class="card-text">
+              Serving You better
+            </p>
+            <div class="input-wrapper">  
+              <a href="{% url 'products' %}">
+                <button class="btn btn-primary w-100">
+                  <span>Shop Now</span>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </a>
+            </div>
+        {% else %}
+            <p class="card-text">
+              Serving You better. to start Shopping please signup
+            </p>
+            <div class="input-wrapper">  
+              <a href="{% url 'signup' %}">
+                <button class="btn btn-primary w-100">
+                  <span>Signup</span>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </a>
+            </div>
           </div>
-        </div>
-
+        {% endif %}
       </div>
     </section>
 

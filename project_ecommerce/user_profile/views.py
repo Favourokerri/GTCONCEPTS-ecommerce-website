@@ -35,12 +35,11 @@ def edith_profile(request):
             profile = Profile.objects.get(user=request.user)
             user.first_name = request.POST['first_name']
             user.last_name = request.POST['last_name']
-            profile.home_address = request.POST['address']
-            profile.martriculation_number = request.POST['matriculation_number']
+            profile.Home_address = request.POST['address']
             profile.phone_number = request.POST[str('phone_number')]
             user.save()
             profile.save()
-            messages.success(request, "profile edithed successfully")
+            messages.success(request, "profile edited successfully")
             return redirect('profile')
         except OperationalError as e:
             messages.error(request, "please input only vald characters no emojis")

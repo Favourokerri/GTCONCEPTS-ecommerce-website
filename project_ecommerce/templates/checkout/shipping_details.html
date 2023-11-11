@@ -9,7 +9,7 @@
         <div class="form-group">
             <label for="city">City:</label>
             <select id="city" name="city" required>
-                    <option value="">select valuse</option>
+                    <option value="">select city</option>
                 {% for shippingFee in shippingFees %}
                     <option value="{{ shippingFee.location }}">{{ shippingFee.location }}</option>
                 {% endfor %}

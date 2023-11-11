@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from .mail import send_mail_after_registration
 from users_auth.validtion import validate_password
 from user_profile.models import Profile
 from django.contrib.auth.hashers import make_password
@@ -14,14 +15,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
-def send_mail_after_registration(email, auth_token):
-    """ function that handels email for verifying accounts"""
-    subject = "welcome to Gt concept. verify account to log in"
-    message = f'Hi click, or paste this link to verify your account http://192.168.43.79:8000/user/verify/{auth_token}'
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [email]
-    send_mail(subject, message , email_from ,recipient_list)
-
 def sign_up(request):
     """
         View for handling signing up
