@@ -198,6 +198,7 @@
     --color: var(--eerie-black);
     --border-color: var(--eerie-black);
     padding-inline: 40px;
+    margin-right: 10px;
   }
   
   .btn-outline:is(:hover, :focus) {
@@ -404,6 +405,11 @@
     max-width: 12ch;
   }
   
+  .centralize-btn{
+    display: flex;
+    margin-left: 2px;
+    
+  }
   
   
   

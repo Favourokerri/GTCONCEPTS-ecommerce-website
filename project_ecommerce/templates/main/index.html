@@ -24,12 +24,19 @@
               </button>
             </a>
           {% else %}
-            <h2 class="h2 hero-title">To Start Shopping, Please Sign Up</h2>
+            <h2 class="h2 hero-title">To Start Shopping, Please Sign in</h2>
+            <div class="centralize-btn">
             <a href="{% url 'signup' %}">
               <button class="btn btn-outline" >
                 Signup
               </button>
             </a>
+              <a href="{% url 'login' %}">
+              <button class="btn btn-outline" >
+                Login
+              </button>
+            </a>
+            </div>
           {% endif %}
         </div>
 

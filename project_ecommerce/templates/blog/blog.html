@@ -74,21 +74,32 @@
           style="background-image: url({% static './images/newsletter-bg.png' %})">
 
           <h2 class="card-title">GT Concepts</h2>
-
-          <p class="card-text">
-            serving You better
-          </p>
-          <div class="input-wrapper">  
-            <a href="{% url 'products' %}">
-              <button class="btn btn-primary w-100">
-                <span>Shop Now</span>
-                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-              </button>
-            </a>
+          {% if user.is_authenticated %}
+            <p class="card-text">
+              Serving You better
+            </p>
+            <div class="input-wrapper">  
+              <a href="{% url 'products' %}">
+                <button class="btn btn-primary w-100">
+                  <span>Shop Now</span>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </a>
+            </div>
+        {% else %}
+            <p class="card-text">
+              Serving You better. to start Shopping please signup
+            </p>
+            <div class="input-wrapper">  
+              <a href="{% url 'signup' %}">
+                <button class="btn btn-primary w-100">
+                  <span>Signup</span>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </a>
+            </div>
           </div>
-
-        </div>
-
+        {% endif %}
       </div>
     </section>
 

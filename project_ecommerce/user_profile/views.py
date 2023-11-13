@@ -10,15 +10,19 @@ import uuid
 # Create your views here.
 def profile(request):
     """ models for our profile"""
-    contact_details = Contact_detail.objects.filter(is_major=True).first()
-    try:
-        profile = Profile.objects.get(user=request.user)
-    except Profile.DoesNotExist:
-        profile = Profile.objects.create(user=request.user, auth_token=str(uuid.uuid4()))
-        profile.save()
+    if request.user.is_authenticated:
+        contact_details = Contact_detail.objects.filter(is_major=True).first()
+        try:
+            profile = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            profile = Profile.objects.create(user=request.user, auth_token=str(uuid.uuid4()))
+            profile.save()
 
-    orders = Order.objects.filter(user=request.user)
-    order_items = OrderItem.objects.filter(order__user=request.user)
+            orders = Order.objects.filter(user=request.user)
+            order_items = OrderItem.objects.filter(order__user=request.user)
+    else:
+        messages.warning(request, 'please login to access this page')
+        return redirect('login')
     context= {"profile":profile,
               "orders":orders,
               "order_items":order_items,
